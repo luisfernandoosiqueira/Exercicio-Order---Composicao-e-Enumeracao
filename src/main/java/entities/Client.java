@@ -1,5 +1,6 @@
 package entities;
 
+import exceptions.OrderException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,7 +16,15 @@ public class Client {
     // Objeto criado para formatar a data
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Client(String name, String email, Date birthDate) {
+    public Client(String name, String email, Date birthDate) throws OrderException {
+
+        Date now = new Date();
+        if (birthDate.after(now)) {
+            throw new OrderException("Data de nascimento deve ser anterior a data atual");
+        } else {
+            this.birthDate = birthDate;
+        }
+
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
@@ -41,8 +50,13 @@ public class Client {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(Date birthDate) throws OrderException {
+        Date now = new Date();
+        if (birthDate.before(now)) {
+            throw new OrderException("Data de nascimento deve ser anterior à data atual.");
+        } else {
+            this.birthDate = birthDate;
+        }
     }
 
     @Override

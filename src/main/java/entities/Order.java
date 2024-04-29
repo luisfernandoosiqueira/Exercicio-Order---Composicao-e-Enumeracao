@@ -1,6 +1,7 @@
 package entities;
 
 import entities.enums.OrderStatus;
+import exceptions.OrderException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,9 +23,16 @@ public class Order {
     }
 
     public Order(Date moment, OrderStatus status, Client client) {
-        this.moment = moment;
-        this.status = status;
-        this.client = client;
+
+        if (status != OrderStatus.PENDING_PAYMENT && status != OrderStatus.PROCESSING && status != OrderStatus.SHIPPED && status != OrderStatus.DELIVERED) {
+            throw new IllegalArgumentException("Estado do pedido inválido");
+
+        } else {
+
+            this.moment = moment;
+            this.status = status;
+            this.client = client;
+        }
     }
 
     public Date getMoment() {

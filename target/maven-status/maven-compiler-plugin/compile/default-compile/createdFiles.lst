@@ -1,6 +1,7 @@
-entities\Order.class
-entities\Product.class
 entities\Client.class
 entities\enums\OrderStatus.class
 application\Program.class
+entities\Order.class
+exceptions\OrderException.class
+entities\Product.class
 entities\OrderItem.class

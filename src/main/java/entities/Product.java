@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.InputMismatchException;
+
 public class Product {
 
     private String name;
@@ -9,6 +11,7 @@ public class Product {
     }
 
     public Product(String name, Double price) {
+
         this.name = name;
         this.price = price;
     }
