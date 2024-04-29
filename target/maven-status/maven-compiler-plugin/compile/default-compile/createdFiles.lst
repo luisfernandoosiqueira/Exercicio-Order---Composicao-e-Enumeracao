@@ -1,5 +1,6 @@
 entities\Client.class
 entities\enums\OrderStatus.class
+exceptions\OrderException$InvalidQuantityException.class
 application\Program.class
 entities\Order.class
 exceptions\OrderException.class
